@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Task Manager</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<button id="menu-btn">☰</button>
+<div class="container">
+    
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    
+    <div class="logo">
+
+      <div class="logo-icon">📋</div>
+
+      <div>
+        <h2>Task Manager ☑️ </h2>
+        <p>Organize. Plan. Achieve.</p>
+      </div>
+
+    </div>
+
+    <nav>
+      <a class="active" href="#" data-filter="all"><span class="ic">🏠</span> Dashboard</a>
+      <a href="#" data-filter="all"><span class="ic">📋</span> All Tasks</a>
+      <a href="#" data-filter="pending"><span class="ic">⏳</span> Pending</a>
+      <a href="#" data-filter="completed"><span class="ic">✅</span> Completed</a>
+      <a href="#" data-filter="high"><span class="ic">🚩</span> High Priority</a>
+      <a href="#" data-filter="all"><span class="ic">📅</span> Calendar</a>
+    </nav>
+
+    <div class="dark-mode">
+      <span>🌙 Dark Mode</span>
+      <label class="switch">
+        <input type="checkbox" id="theme" />
+        <span class="slider"></span>
+      </label>
+    </div>
+  </aside>
+  
+  <!-- Main -->
+  <section class="content">
+    <header class="header">
+      <div>
+        <h1>Good Morning, Developer! 👋</h1>
+        <p>Let's get your tasks done.</p>
+      </div>
+      <button id="create" class="btn">+ Add Task</button>
+    </header>
+
+    <!-- Statistics -->
+    <div class="stats">
+
+      <div class="stat-card stat-total">
+
+        <div class="stat-icon">🗂️</div>
+
+        <div>
+            <h2 id="task-count">0</h2>
+            <p>Total Tasks</p>
+        </div>
+
+      </div>
+
+      <div class="stat-card stat-warning">
+
+        <div class="stat-icon">⏰</div>
+
+        <div>
+            <h2 id="pending-count">0</h2>
+            <p>Pending Tasks</p>
+        </div>
+
+      </div>
+
+      <div class="stat-card stat-success">
+
+        <div class="stat-icon">✔️</div>
+        <div>
+            <h2 id="completed-count">0</h2>
+            <p>Completed Tasks</p>
+        </div>
+      </div>
+      <div class="stat-card stat-danger">
+        <div class="stat-icon">⚠️</div>
+        <div>
+            <h2 id="overdue-count">0</h2>
+            <p>Overdue Tasks</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search -->
+    <div class="toolbar">
+      <div class="search-wrap">
+        <span class="search-ic">🔍</span>
+        <input id="search" type="text" placeholder="Search tasks..." />
+      </div>
+      <select id="filter">
+        <option value="all">All Tasks</option>
+        <option value="pending">Pending</option>
+        <option value="completed">Completed</option>
+        <option value="high">High Priority</option>
+      </select>
+    </div>
+    
+    <!-- Tasks -->
+    <div class="task-list">
+      <h2 class="section-title">Pending Tasks</h2>
+      <div class="Tasks" id="pendingTasks"></div>
+      <h2 class="section-title">Completed Tasks</h2>
+      <div class="Tasks" id="completedTasks"></div>
+    </div>
+  </section>
+
+  <!-- Form Modal -->
+  <div class="form" id="formModal">
+    <div class="popup">
+
+      <div class="top">
+        <h2 id="formTitle">Add Task</h2>
+        <button id="close" type="button">✖</button>
+      </div>
+
+      <form id="taskForm" novalidate>
+
+        <input name="taskName" type="text" placeholder="Task Name" maxlength="100" required />
+        <input name="duedate" id="calendarInput" type="date" required />
+        <input name="time" type="time" required />
+
+        <textarea name="description" placeholder="Description" maxlength="500" required></textarea>
+
+        <select name="priority" id="priorityInput">
+          <option value="High">High Priority</option>
+          <option value="Medium" selected>Medium Priority</option>
+          <option value="Low">Low Priority</option>
+        </select>
+
+        <button type="submit" class="btn" id="saveBtn">Save Task</button>
+
+      </form>
+
+    </div>
+  </div>
+
+  <!-- Right Panel -->
+  <aside class="right-panel">
+    <div class="calendar-card">
+
+      <div class="cal-head">
+        <h2>Calendar</h2>
+      </div>
+
+      <div class="cal-nav">
+        <button id="prevMonth">‹</button>
+        <span id="calLabel">Month</span>
+        <button id="nextMonth">›</button>
+      </div>
+
+      <div class="cal-grid" id="calGrid"></div>
+    </div>
+
+    <div class="progress-card">
+      <h2>Progress Overview</h2>
+      <div class="ring-wrap">
+        <div class="ring" id="progressRing">
+          <div class="ring-inner">
+            <span id="progressPct">0%</span>
+            <small>Completed</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="legend">
+        <span>
+            <i class="dot dot-green"></i> Completed (<b id="legendDone">0</b>)
+        </span>
+        <span>
+            <i class="dot dot-yellow"></i> Pending (<b id="legendPend">0</b>)
+        </span>
+      </div>
+
+    </div>
+  </aside>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
