@@ -160,7 +160,7 @@ function createTaskElement(task) {
 
     // Toggle complete button
     const toggleBtn = document.createElement('button');
-    toggleBtn.textContent = task.completed ? '↩️' : '✅';
+    toggleBtn.textContent = task.completed ? '⟳' : '✓';
     toggleBtn.title = task.completed ? 'Reopen' : 'Complete';
     toggleBtn.addEventListener('click', function(e) {
         e.stopPropagation(); // Prevent any parent handlers
@@ -170,7 +170,7 @@ function createTaskElement(task) {
 
     // Edit button
     const editBtn = document.createElement('button');
-    editBtn.textContent = '✏️';
+    editBtn.textContent = '✎';
     editBtn.title = 'Edit';
     editBtn.addEventListener('click', function(e) {
         e.stopPropagation();
@@ -180,7 +180,7 @@ function createTaskElement(task) {
 
     // Delete button
     const deleteBtn = document.createElement('button');
-    deleteBtn.textContent = '🗑️';
+    deleteBtn.textContent = '🗑';
     deleteBtn.title = 'Delete';
     deleteBtn.addEventListener('click', function(e) {
         e.stopPropagation();
